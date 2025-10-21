@@ -7,21 +7,18 @@
         html {
             background-color: white;
         }
-        .o {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
+        
         .objeto {
+            position: absolute;
             transition: 0.2s ease;
             filter: drop-shadow(0 0 0 red)
                     drop-shadow(0 0 0 red)
                     drop-shadow(0 0 0 red)
                     drop-shadow(0 0 0 red)
                     brightness(1.1);
+            cursor: pointer;
         }
-        .objeto.seleccionado {
+        .objeto:hover, .objeto.seleccionado {
             filter: drop-shadow(1px 1px 0 red)
                     drop-shadow(1px -1px 0 red)
                     drop-shadow(-1px 1px 0 red)
@@ -61,7 +58,7 @@
                 data.forEach(item => {
                     const img = document.createElement('img');
                     img.src = `output/${item.file}`;
-                    img.classList.add('o', 'objeto');
+                    img.classList.add('objeto');
                     img.style.left = `${ancho * item.relativeOffsetX}px`;
                     img.style.top = `${alto * item.relativeOffsetY}px`;
                     img.style.width = `${ancho * item.relativeWidth}px`;
