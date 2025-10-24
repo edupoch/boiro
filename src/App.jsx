@@ -7,9 +7,9 @@ function App() {
   
   return (
     <>
-      <img className="fondo" src={fondo1} />
-      <img className="fondo" src={fondo2} />
-      <img className="fondo" src={fondo3} />
+      <img className="absolute top-0 left-0 max-w-full" src={fondo1} />
+      <img className="absolute top-0 left-0 max-w-full" src={fondo2} />
+      <img className="absolute top-0 left-0 max-w-full" src={fondo3} />
     </>
   )
 }
