@@ -1,79 +1,13 @@
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        html {
-            background-color: white;
-        }
-        
-        .objeto {
-            position: absolute;
-            transition: 0.2s ease;
-            filter: drop-shadow(0 0 0 red)
-                    drop-shadow(0 0 0 red)
-                    drop-shadow(0 0 0 red)
-                    drop-shadow(0 0 0 red)
-                    brightness(1.1);
-            cursor: pointer;
-        }
-        .objeto:hover, .objeto.seleccionado {
-            filter: drop-shadow(1px 1px 0 red)
-                    drop-shadow(1px -1px 0 red)
-                    drop-shadow(-1px 1px 0 red)
-                    drop-shadow(-1px -1px 0 red)
-                    brightness(1.1);
-        }
-
-        .fondo {
-            position: absolute;
-            top: 0;
-            left: 0;
-            max-width: 100%;
-        }
-        
-    </style>
-</head>
-<body>
-    <img class="fondo" src="fondos/1.png" />
-    <img class="fondo" src="fondos/3.png" />
-    <img class="fondo" src="fondos/2.png" />
-
-    <script>
-        const fondo = document.querySelector('.fondo');
-        fondo.onload = () => {
-            // Obtenemos el ancho y alto que tiene la primera imagen de fondo, una vez adaptada al tamaño de la pantalla
-
-            const ancho = fondo.clientWidth;
-            const alto = fondo.clientHeight;
-
-            console.log(`Ancho: ${ancho}, Alto: ${alto}`);
-            
-            // Leemos el json en output/metadata.json
-            // y las colocamos las imágenes en el HTML, situándolas según sus coordenadas offsetX y offsetY
-            fetch('output/metadata.json')
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(item => {
-                    const img = document.createElement('img');
-                    img.src = `output/${item.file}`;
-                    img.classList.add('objeto');
-                    img.style.left = `${ancho * item.relativeOffsetX}px`;
-                    img.style.top = `${alto * item.relativeOffsetY}px`;
-                    img.style.width = `${ancho * item.relativeWidth}px`;
-                    img.style.height = `${alto * item.relativeHeight}px`;
-
-                    document.body.appendChild(img);
-
-                    img.addEventListener('click', () => {
-                        img.classList.toggle('seleccionado');
-                    });
-                });
-            });
-        };
-
-        
-    </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>boiro-react</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
